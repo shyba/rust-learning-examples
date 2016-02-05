@@ -1,20 +1,15 @@
 from ctypes import cdll
 from ctypes import CFUNCTYPE
+from ctypes import POINTER
+from ctypes import c_int
 
-X = []
+def callback(x):
+    print x
+    return 1
 
-def increment():
-    X.append(1)
-
-def callback():
-    with open('/tmp/big_dump', 'a') as appender:
-        appender.write(str(X))
-
-CTYPECALLBACK = CFUNCTYPE(None)
+CTYPECALLBACK = CFUNCTYPE(c_int, c_int)
 
 lib = cdll.LoadLibrary("target/release/libembed.so")
 
 pycallback = CTYPECALLBACK(callback)
-print lib.process(pycallback)
-increment()
-print len(X)
+dir(lib.process(pycallback))

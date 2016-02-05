@@ -3,15 +3,14 @@ use std::ffi::CString;
 extern crate libc;
 
 #[no_mangle]
-pub extern fn process(callback: fn() -> ()) -> *const libc::c_char {
+pub extern fn process(callback: fn(i32) -> (i32)) -> *const libc::c_char {
     let handles: Vec<_> = (0..10).map(|_| {
         thread::spawn(move || {
             let mut x = 0;
             for _ in 0..5_000_000 {
-                x += 1;
-                callback()
+                x += 1
             }
-            x
+            callback(x)
         })
     }).collect();
 
