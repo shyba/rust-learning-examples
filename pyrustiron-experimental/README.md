@@ -10,16 +10,16 @@ Current implementation handles arount 30k/sec HTTP requests calling a python cal
 Running
 =========
 
-'''
+```
 cargo build --release
 $ python embed.py
 $ curl http://localhost:3000/
 Fri, 05 Feb 2016 02:16:24 +0000%
-'''
+```
 
 AB Benchmark
 ============
-'''
+```
 Server Software:        
 Server Hostname:        localhost
 Server Port:            3000
@@ -37,4 +37,4 @@ Requests per second:    29336.00 [#/sec] (mean)
 Time per request:       34.088 [ms] (mean)
 Time per request:       0.034 [ms] (mean, across all concurrent requests)
 Transfer rate:          3810.24 [Kbytes/sec] received
-'''
+```
