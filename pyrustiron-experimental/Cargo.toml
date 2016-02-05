@@ -1,0 +1,12 @@
+[package]
+name = "pyrustiron-experimental"
+version = "0.1.0"
+authors = ["Victor Shyba <victor.shyba@gmail.com>"]
+
+[lib]
+name = "pyrustiron"
+crate-type = ["dylib"]
+
+[dependencies]
+iron = "*"
+libc = "*"
